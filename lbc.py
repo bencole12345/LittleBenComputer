@@ -44,100 +44,100 @@ class LittleBenComputer:
                 self.instructions.append([components[0], None])
 
     def add(self, address):
-    	"""
-    	The LMC `ADD` instruction.
+        """
+        The LMC `ADD` instruction.
 
-    	Adds the value in the passed memory address to the accumulator.
-    	"""
+        Adds the value in the passed memory address to the accumulator.
+        """
         self.accumulator += self.memory[address]
 
     def sub(self, address):
-    	"""
-    	The LMC `SUB` instruction.
+        """
+        The LMC `SUB` instruction.
 
-    	Subtracts the value in the passed memory address from the accumulator.
-    	"""
+        Subtracts the value in the passed memory address from the accumulator.
+        """
         self.accumulator -= self.memory[address]
 
     def dat(self, address, value):
-    	"""
-    	The LMC `DAT` instruction.
+        """
+        The LMC `DAT` instruction.
 
-    	Marks the address as data and stores the passed value in it.
-    	"""
+        Marks the address as data and stores the passed value in it.
+        """
         self.memory[address] = value
 
     def bra(self, pc):
-    	"""
-    	The LMC `BRA` instruction.
+        """
+        The LMC `BRA` instruction.
 
-    	Sets the program counter to the passed line.
-    	"""
+        Sets the program counter to the passed line.
+        """
         self.program_counter = pc
 
     def brp(self, pc):
-    	"""
-    	The LMC `BRP` instruction.
+        """
+        The LMC `BRP` instruction.
 
-    	Branches to the passed line if the accumulator is positive or zero.
-    	"""
+        Branches to the passed line if the accumulator is positive or zero.
+        """
         if not self.accumulator < 0:
             self.program_counter = pc
 
     def brz(self, pc):
-    	"""
-    	The LMC `BRZ` instruction.
+        """
+        The LMC `BRZ` instruction.
 
-    	Branches to the passed line if the accumulator contains zero.
-    	"""
+        Branches to the passed line if the accumulator contains zero.
+        """
         if self.accumulator == 0:
             self.program_counter = pc
 
     def lda(self, address):
-    	"""
-    	The LMC `LDA` instruction.
+        """
+        The LMC `LDA` instruction.
 
-    	Loads the value in the passed memory address into the accumulator.
-    	"""
+        Loads the value in the passed memory address into the accumulator.
+        """
         self.accumulator = self.memory[address]
 
     def sta(self, address):
-    	"""
-    	The LMC `STA` instruction.
+        """
+        The LMC `STA` instruction.
 
-    	Stores the accumulator value in the passed memory address.
-    	"""
+        Stores the accumulator value in the passed memory address.
+        """
         self.memory[address] = self.accumulator
 
     def inp(self):
-    	"""
-    	The LMC `INP` instruction.
+        """
+        The LMC `INP` instruction.
 
-    	Gets user input and stores the result in the accumulator.
-    	"""
+        Gets user input and stores the result in the accumulator.
+        """
         self.accumulator = int(input("Enter a number: "))
 
     def out(self):
-    	"""
-    	The LMC `OUT` instruction.
+        """
+        The LMC `OUT` instruction.
 
-    	Outputs the value in the accumulator.
-    	"""
+        Outputs the value in the accumulator.
+        """
         print(self.accumulator)
 
     def hlt(self):
-    	"""
-    	The LMC `HLT` instruction.
+        """
+        The LMC `HLT` instruction.
 
-    	Terminates the program.
-    	"""
+        Terminates the program.
+        """
         self.running = False
         print("HALT")
 
     def exec_instruction(self, instruction):
-    	"""
-    	Finds and executes the correct method for the passed instruction.
-    	"""
+        """
+        Finds and executes the correct method for the passed instruction.
+        """
         opcode, operand = instruction[0], instruction[1]
         if opcode == "ADD":
             self.add(operand)
