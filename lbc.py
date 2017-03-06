@@ -2,14 +2,14 @@ import sys
 
 
 class LittleBenComputer:
-	"""
-	Implementation of the Little Man Computer.
-	"""
+    """
+    Implementation of the Little Man Computer.
+    """
 
     def run(self):
-    	"""
-		Begins executing the program.
-    	"""
+        """
+        Begins executing the program.
+        """
         self.running = True
         self.accumulator = 0
         self.program_counter = 0
@@ -19,9 +19,9 @@ class LittleBenComputer:
             self.exec_instruction(next_instruction)
 
     def load_file(self, source):
-    	"""
-    	Loads and preprocesses the source file.
-    	"""
+        """
+        Loads and preprocesses the source file.
+        """
         with open(source, "r") as infile:
             self.lines = infile.readlines()
         self.instructions = []
