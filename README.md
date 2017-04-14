@@ -32,10 +32,34 @@ The opcodes available are as following:
 
 `STA x` - stores the value in the accumulator in address `x`.
 
-`BRA x` - changes the program counter to `x`.
+`BRA x` - branches to `x`.
 
-`BRP x` - changes the program counter to `x` if the value in the accumulator is zero or positive.
+`BRP x` - branches to `x` if the value in the accumulator is zero or positive.
 
-`BRZ x` - changes the program counter to `0` if the value in the accumulator is zero.
+`BRZ x` - branches to `x` if the value in the accumulator is zero.
 
 `HLT` - terminates the program.
+
+To mark a line so that it can be referenced in the future, write the name of the pointer before the instruction. For example,
+
+```
+myLoop <opcode> <operand>
+```
+
+creates a reference to this line of code with the name `myLoop`, so that it can be branched to in the future:
+
+```
+BRA myLoop
+```
+
+will then branch to this line.
+
+To use a variable, first allocate it using a `DAT` instruction and a default value. For example,
+
+```
+x DAT 12
+...
+OUT x
+```
+
+will output `12` provided that the value of `x` has not been updated in the meantime.
