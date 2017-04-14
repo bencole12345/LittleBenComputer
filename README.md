@@ -17,7 +17,7 @@ python lbc.py test.lbc
 
 The `.lbc` extension is not required: anything should work.
 
-## Opcodes
+### Opcodes
 The opcodes available are as following:
 
 `ADD x` - adds `x` to the value in the accumulator.
@@ -40,6 +40,8 @@ The opcodes available are as following:
 
 `HLT` - terminates the program.
 
+### Line References
+
 To mark a line so that it can be referenced in the future, write the name of the pointer before the instruction. For example,
 
 ```
@@ -53,6 +55,8 @@ BRA myLoop
 ```
 
 will then branch to this line.
+
+### Variables
 
 To use a variable, first allocate it using a `DAT` instruction and a default value. For example,
 
